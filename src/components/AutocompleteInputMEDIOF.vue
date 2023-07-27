@@ -8,18 +8,17 @@
         @input="handleInput"
         @keydown="handleKeyDown"
         style="height: 10rem; border: 1px solid #ccc;padding: 10px;"
-      >{{ inputValue }}</div>
+      ></div>
     </div>
     <ul v-if="showSuggestions" class="autocomplete-results">
       <li v-for="contact in suggestions" :key="contact.id">
         <a
-          @click="replaceWith(contact.name,contact.link)"
+          @click="replaceWith(contact.name)"
           href="#"
           class="contact-link"
         >
           {{ contact.name }}
         </a>
-        <span class="email">{{ contact.name }}</span>
       </li>
     </ul>
   </div>
@@ -91,16 +90,6 @@
   font-style: italic;
   color: #999;
 }
-
-.autocomplete-container .input {
-  white-space: pre-wrap;
-}
-
-.autocomplete-results li .selected-suggestion {
-  background-color: #ffcccc; /* Use your desired background color, e.g., red */
-  padding: 2px 5px;
-  border-radius: 3px;
-}
 </style>
 
 <script>
@@ -113,10 +102,6 @@ export default {
       suggestions: [],
       showSuggestions: false,
     };
-  },
-  mounted() {
-    // Cuando el componente se monta, actualizamos el contenido del div con el texto precargado
-    this.$refs.input.innerHTML = this.inputValue;
   },
   methods: {
     
@@ -168,30 +153,29 @@ export default {
       }
     },
 
-    replaceWith(name,link) {
-  const inputText = this.$refs.input.innerText.trim();
-  const words = inputText.split(' ');
-/*   words[words.length - 1] = `<span class="selected-suggestion" style="background-color: #bebfc5;padding:5px;border-radius:8px; text-decoration: none; color: #fff;">${name}</span>`; */
-  words[words.length - 1] = `<a href="${link}" style="background-color: #bebfc5;padding:5px;border-radius:8px; text-decoration: none; color: #fff;">${name}</a>`;
-  const updatedText = words.join(' ');
+    replaceWith(name) {
+      const inputText = this.$refs.input.innerText.trim();
+      const words = inputText.split(' ');
+/*       words[words.length - 1] = `<a href="${link}" style="background-color: #bebfc5;padding:5px;border-radius:8px; text-decoration: none; color: #fff;">${name}</a>`; */
+      words[words.length - 1] = `${name}`;
+      const updatedText = words.join(' ');
 
-  this.$refs.input.innerHTML = updatedText;
+      this.$refs.input.innerHTML = updatedText;
 
-  const range = document.createRange();
-  range.selectNodeContents(this.$refs.input);
-  range.collapse(false);
-  const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(range);
+      const range = document.createRange();
+      range.selectNodeContents(this.$refs.input);
+      range.collapse(false);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
 
-  this.$refs.input.focus();
-  this.$refs.input.dispatchEvent(new Event('input'));
+      this.$refs.input.focus();
+      this.$refs.input.dispatchEvent(new Event('input'));
 
-  this.suggestions = [];
-  this.showSuggestions = false;
-},
+      this.suggestions = [];
+      this.showSuggestions = false;
+    },
+    
   },
 };
 </script>
-
-ChatGPT

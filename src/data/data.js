@@ -1,0 +1,26 @@
+ const params = {
+    candidate_name: 'Jhon',
+    candidate_complete_name: 'Jhon Doe',
+    cv_url: 'https://www.google.com',
+    offer_url: 'https://www.google.com',
+    employee_contract_url: 'https://www.google.com',
+    company: 'Google',
+    job: 'Software Engineer',
+    job_url: 'https://www.google.com',
+    sender_name: 'Jane',
+    test_url: 'https://www.google.com',
+    job_last_test_url: 'https://www.google.com',
+    bussiness_name: 'Jane Darling',
+    bussiness_first_name: 'Jane',
+    bussiness_phone: '5551234',
+    bussiness_email: 'jane@gmail.com',
+    logged_in_bussiness_name: 'Jane Darling',
+    logged_in_bussiness_first_name: 'Jane',
+    logged_in_bussiness_phone: '5551234',
+    logged_in_bussiness_email: 'jane@gmail.com',
+    logged_in_company: 'Google',
+    rejection_reason: 'low result',
+    bussiness_job_url: 'www.facebook.com',
+    final_test_result: 4.5,}
+
+export default params;

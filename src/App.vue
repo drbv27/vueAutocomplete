@@ -25,4 +25,14 @@ export default {
   border: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  }
+ .ppal {
+  height: 100vh; /* Aseguramos que el componente principal ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container {
+  height: 100%; /* Aseguramos que el contenedor de la aplicación ocupe toda la altura del componente principal */}
 </style>
